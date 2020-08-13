@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'
+
+
+
 
 import { SharedModule } from '../shared/shared.module';
+import { ComponentsModule } from '../components/components.module';
+
 import { AppRoutingModule } from '../app-routing.module';
 
 import { ProgressComponent } from '../pages/progress/progress.component';
@@ -27,7 +33,9 @@ import { DashboardComponent } from '../pages/dashboard/dashboard.component';
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }
