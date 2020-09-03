@@ -11,6 +11,7 @@ import { Grafica1Component } from '../pages/grafica1/grafica1.component';
 import { ProgressComponent } from '../pages/progress/progress.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
     {
@@ -23,7 +24,8 @@ const routes: Routes = [
           {path: 'grafica1', component: Grafica1Component, data: { titulo: 'Grafica #1' }  },
           {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes' }  },
           {path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' }  },
-          {path: 'RXJS', component: RxjsComponent, data: { titulo: 'RXJS' }  }
+          {path: 'RXJS', component: RxjsComponent, data: { titulo: 'RXJS' }  },
+          {path: 'perfil', component: PerfilComponent, data: { titulo: 'Perfil de usuario' }  }
           
     
         ]
