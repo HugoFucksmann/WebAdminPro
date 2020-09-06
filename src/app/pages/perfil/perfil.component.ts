@@ -41,7 +41,7 @@ export class PerfilComponent implements OnInit {
        this.usuario.nombre = nombre;
        this.usuario.email = email;
 
-       Swal.fire('Gardado', 'Cambios fueron guardados', 'success');
+       Swal.fire('Gardado', 'Los cambios fueron actualizados', 'success');
       }, (err) => {
         Swal.fire('Error', err.error.msg, 'error');
       });
@@ -74,7 +74,6 @@ export class PerfilComponent implements OnInit {
         Swal.fire('Guardado', 'Imagen actualizada con exito', 'success');
       }).catch( err => {
         console.log(err);
-        
         Swal.fire('Error', "error al cargar imagen", 'error');
       });
   }

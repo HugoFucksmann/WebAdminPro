@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 
@@ -30,12 +31,10 @@ export class FileUploadService {
       });
 
       const data = await resp.json();
-
+      
       if ( data.ok ){
-        
         return data.nombreArchivo;
       }else{
-
         console.log(data.msg);
         return false
       }

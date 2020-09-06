@@ -4,7 +4,43 @@
     cursor: pointer;
 }
 
+#themecolors .selector {
+    cursor: pointer;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
 .img-avatar{
     width: 200px;
     height: 200px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w140 {
+    width: 140px;
+}
+
+.avatar{
+    border: 1px solid grey;
+    border-radius: 100%;
+    width: 40px;
+}
+
+.oculto{
+    display: none;
+}
+
+.fondo-modal-imagen{
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
 }

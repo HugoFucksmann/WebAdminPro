@@ -1,13 +1,16 @@
-import { Usuario } from './../models/usuario.models';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { tap, map, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+import { Observable, of } from 'rxjs';
+import { tap, map, catchError, delay } from 'rxjs/operators';
 
 import { environment } from './../../environments/environment';
+import { Usuario } from './../models/usuario.models';
+
+import { CargarUsuario } from './../interfaces/cargar-usuarios.interface';
 import { LoginForm } from './../interfaces/login-form.interface';
 import { RegisterForm } from './../interfaces/register-form.interface';
-import { Observable, of } from 'rxjs';
 
 const base_url = environment.base_url;
 declare const gapi: any;
@@ -33,6 +36,14 @@ export class UsuarioService {
 
   get uid():string{
     return this.usuario.uid || "";
+  }
+
+  get headers(){
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
   }
   
   googleInit(){
@@ -89,11 +100,7 @@ export class UsuarioService {
       role: this.usuario.role
     }
 
-    return this.http.put(`${ base_url }/usuarios/${ this.uid }`, data, {
-      headers: {
-        'x-token': this.token
-      }
-    });
+    return this.http.put(`${ base_url }/usuarios/${ this.uid }`, data, this.headers );
   }
 
 
@@ -130,6 +137,37 @@ export class UsuarioService {
     });
   }
 
+  cargarUsuarios( desde: number = 0 ){
 
+    const url = `${ base_url }/usuarios?desde=${ desde }`;
+    return this.http.get<CargarUsuario>( url, this.headers )
+      .pipe(
+        //delay(300),
+        map( resp => {          
+          const usuarios = resp.usuarios.map(
+            user => new Usuario( user.google, user.nombre, user.email, user.img, user.role, user.uid )
+          );
+          return {
+            total: resp.total,
+            usuarios
+          };
+          
+        } )
+      )
+
+  }
+
+  
+  eliminarUsuario( usuario: Usuario ){
+    
+    
+    const url = `${ base_url }/usuarios/${ usuario.uid }`;    
+    return this.http.delete( url, this.headers );
+  }
+
+  guardarUsuario( usuario: Usuario ) {
+
+    return this.http.put(`${ base_url }/usuarios/${ usuario.uid }`, usuario, this.headers );
+  }
 
 }
