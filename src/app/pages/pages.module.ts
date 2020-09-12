@@ -1,3 +1,5 @@
+import { MedicoComponent } from './mantenimiento/medicos/medico.component';
+import { PipesModule } from './../pipes/pipes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -21,6 +23,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimiento/usuarios/usuarios.component';
 import { HospitalesComponent } from './mantenimiento/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
+
 
 
 
@@ -36,7 +40,9 @@ import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
     PerfilComponent,
     UsuariosComponent,
     HospitalesComponent,
-    MedicosComponent
+    MedicosComponent,
+    MedicoComponent,
+    BusquedaComponent,
   ],
   exports:[
    
@@ -47,7 +53,8 @@ import { MedicosComponent } from './mantenimiento/medicos/medicos.component';
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ]
 })
 export class PagesModule { }

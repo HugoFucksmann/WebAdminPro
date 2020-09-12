@@ -11,15 +11,15 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
 
-  menuItems: any[];
+  //menuItems: any[];
   public usuario: Usuario;
   
   
 
-  constructor(private SidebarService:SidebarService,
+  constructor(public sidebarService:SidebarService,
               private usuarioService: UsuarioService) { 
 
-    this.menuItems = SidebarService.menu;
+    ///this.menuItems = sidebarService.menu;
 
     this.usuario = usuarioService.usuario; 
 

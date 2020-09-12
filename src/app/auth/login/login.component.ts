@@ -33,16 +33,13 @@ export class LoginComponent implements OnInit {
     this.renderButton();
   }
 
-  
-
-
   login(){
     
-    console.log(this.formularioLogin.value);
+    
     this.usuarioService.login( this.formularioLogin.value )
     .subscribe( resp => {
 
-      console.log(resp);
+      
       if( this.formularioLogin.get('recordar').value){
         localStorage.setItem('email', this.formularioLogin.get('email').value );
       }else{

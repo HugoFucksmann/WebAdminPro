@@ -1,3 +1,5 @@
+import { Medico } from './../models/medico.model';
+import { Hospital } from './../models/hospital.model';
 import { Usuario } from './../models/usuario.models';
 import { map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
@@ -34,22 +36,43 @@ export class BusquedasService {
     );
   }
 
-  buscar( tipo: 'usuarios' | 'medicos' | 'hospitales', termino: string ) {
+  private transformarHospitales( resultados: any[] ): Hospital[] {
+
+    return resultados;
+  }
+
+  private transformarMedicos( resultados: any[] ): Medico[] {
+
+    return resultados;
+  }
+
+  buscar( tipo:  'medicos'|'usuarios'|'hospitales', termino: string ) {
 
     const url = `${ base_url }/todo/coleccion/${ tipo }/${ termino }`;
     return this.http.get<any[]>( url, this.headers )
-          .pipe(
-            map( (resp:any) => {
+      .pipe(
+        map( (resp:any) => {
 
-              switch ( tipo ) {
-                case 'usuarios':      
-                    return this.transformarUsuarios( resp.resultado )
-              
-                default:
-                  return [];
-              }
-            })
-          );
+          switch ( tipo ) {
+
+            case 'medicos':      
+              return this.transformarMedicos( resp.resultado )
+
+              case 'usuarios':      
+              return this.transformarUsuarios( resp.resultado )
+                
+            case 'hospitales':      
+              return this.transformarHospitales( resp.resultado )
+          
+            default:
+              return [];
+          }
+        })
+      );
   }
 
+  buscarTodo( termino: string ){
+    const url = `${ base_url }/todo/${ termino }`;
+    return this.http.get( url, this.headers );
+  }
 }

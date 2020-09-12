@@ -1,6 +1,7 @@
+import { Router } from '@angular/router';
 import { Usuario } from './../../models/usuario.models';
 import { UsuarioService } from './../../services/usuario.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,20 +9,32 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   public usuario: Usuario;
+  
 
-  constructor(private usuarioService: UsuarioService) { 
-
+  constructor(private usuarioService: UsuarioService,
+              private router: Router) { 
     this.usuario = usuarioService.usuario;
   }
 
+  ngOnInit(): void {   
+  }
 
 
   logout(){
     this.usuarioService.logOut();
   }
   
+  buscar(termino){
+   
+    if( termino.length === 0 ){
+      return this.router.navigateByUrl('/dashboard');
+    }
+    
+    this.router.navigateByUrl(`/dashboard/buscar/${ termino }`);
+
+  }
 
 }
