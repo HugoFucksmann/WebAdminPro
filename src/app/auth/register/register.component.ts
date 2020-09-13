@@ -31,7 +31,7 @@ export class RegisterComponent {
   crearUsuario() {
 
     this.formularioEnviado = true;
-    console.log( this.formularioRegistro.value );
+    
 
     if( this.formularioRegistro.invalid ){
       return;
@@ -49,7 +49,7 @@ export class RegisterComponent {
         this.router.navigateByUrl('/');
 
       }, (err) => {
-        console.warn( err.error.msg );
+        console.log(err);
         Swal.fire('Error', err.error.msg, 'error');
       });
 

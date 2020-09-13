@@ -86,10 +86,8 @@ export class LoginComponent implements OnInit {
             //console.log(id_token);
             this.usuarioService.loginGoolge( id_token )
               .subscribe( resp => {
-                this.ngZone.run( () => {
-
-                  this.router.navigateByUrl('/');
-                })
+        
+                this.router.navigateByUrl('/');
               });
         }, (error) => {
           console.log('paso algo malo che');

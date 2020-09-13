@@ -59,8 +59,6 @@ export class UsuarioService {
         this.auth2 = gapi.auth2.init({
           client_id: '1088794549338-ffn8ok60r5ripbhc39r8jo05k68fe2cj.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin',
-          absoluteURI: 'http://herokupath',
-          proxy: true
         });
         resolve();
       })
