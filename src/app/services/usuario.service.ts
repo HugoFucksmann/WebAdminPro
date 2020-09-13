@@ -59,6 +59,8 @@ export class UsuarioService {
         this.auth2 = gapi.auth2.init({
           client_id: '1088794549338-ffn8ok60r5ripbhc39r8jo05k68fe2cj.apps.googleusercontent.com',
           cookiepolicy: 'single_host_origin',
+          absoluteURI: 'http://herokupath',
+          proxy: true
         });
         resolve();
       })
@@ -138,12 +140,20 @@ export class UsuarioService {
     localStorage.removeItem('token');
     localStorage.removeItem('menu');
 
-    this.auth2.signOut().then( () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then( () => {
+      this.ngZone.run(() => {
+        this.router.navigateByUrl('/login');
+      });
+    });
+
+
+    /*this.auth2.signOut().then( () => {
       this.ngZone.run( () => {
 
         this.router.navigateByUrl('/login');
       })
-    });
+    });*/
   }
 
   cargarUsuarios( desde: number = 0 ){
