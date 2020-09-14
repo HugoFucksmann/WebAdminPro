@@ -3,8 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-incrementador',
-  templateUrl: './incrementador.component.html',
-  styleUrls: ['./incrementador.component.css']
+  templateUrl: './incrementador.component.html'
 })
 export class IncrementadorComponent implements OnInit {
 

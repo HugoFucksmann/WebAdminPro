@@ -6,8 +6,7 @@ declare function customFunctions();
 
 @Component({
   selector: 'app-pages',
-  templateUrl: './pages.component.html',
-  styleUrls: ['./pages.component.css']
+  templateUrl: './pages.component.html'
 })
 export class PagesComponent implements OnInit {
 

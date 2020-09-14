@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/');
     
     }, (err) => {
-      console.warn( err );
+      console.log(err);
       Swal.fire('Error', err.error.msg, 'error');
     });
   }
@@ -83,11 +83,13 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler(element, {},
         (googleUser) => {
             const id_token = googleUser.getAuthResponse().id_token;
-            //console.log(id_token);
+            
             this.usuarioService.loginGoolge( id_token )
               .subscribe( resp => {
-        
-                this.router.navigateByUrl('/');
+                this.ngZone.run( () => {
+
+                  this.router.navigateByUrl('/');
+                })
               });
         }, (error) => {
           console.log('paso algo malo che');

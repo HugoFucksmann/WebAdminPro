@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { Observable, of } from 'rxjs';
-import { tap, map, catchError, delay, filter } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 
 import { environment } from './../../environments/environment';
 import { Usuario } from './../models/usuario.models';
@@ -126,7 +126,7 @@ export class UsuarioService {
 
 
   loginGoolge( token ){
-
+    
     return this.http.post(`${ base_url }/login/google`, { token } )
       .pipe(
         tap((resp: any) => this.guardarLocalStorage(resp.token, resp.menu) )
@@ -138,20 +138,12 @@ export class UsuarioService {
     localStorage.removeItem('token');
     localStorage.removeItem('menu');
 
-    const auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then( () => {
-      this.ngZone.run(() => {
-        this.router.navigateByUrl('/login');
-      });
-    });
-
-
-    /*this.auth2.signOut().then( () => {
+    this.auth2.signOut().then( () => {
       this.ngZone.run( () => {
 
         this.router.navigateByUrl('/login');
       })
-    });*/
+    });
   }
 
   cargarUsuarios( desde: number = 0 ){

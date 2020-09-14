@@ -24,7 +24,7 @@ export class DonaComponent{
   ];
   public doughnutChartType: ChartType = 'doughnut';
 
-  @Input() public colors:Colors[] = [
+  @Input() public colors: Colors[] = [
     { backgroundColor: [ '#6857e', '#009fff', '#ffb414' ] }
   ];
 }

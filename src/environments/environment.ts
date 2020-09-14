@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  base_url: 'http://localhost:3005/api'
-};
+         production: false,
+         base_url: 'https://admin-back-end.herokuapp.com/api',
+       };
 
 /*
  * For easier debugging in development mode, you can import the following file
