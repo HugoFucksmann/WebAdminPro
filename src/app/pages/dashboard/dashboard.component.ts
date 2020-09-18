@@ -12,14 +12,5 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  matarAtodos(){
-
-    alert('hola mundo!');
-    console.log("hola pablo, la matrix te esta llamado");
-
-    
-  }  
-
   
 }

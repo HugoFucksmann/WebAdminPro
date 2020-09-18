@@ -2,7 +2,7 @@ import { MedicoComponent } from './mantenimiento/medicos/medico.component';
 import { PipesModule } from './../pipes/pipes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -57,4 +57,4 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
     PipesModule
   ]
 })
-export class PagesModule { }
+export class PagesModule {}

@@ -2,22 +2,31 @@
 
     <div class="col-6">
 
-        <app-dona   
-            
-            [labels]="label1"
-            [data]="data1"
-            [title]="'Ventas'">
+        <app-dona [labels]="labelDona" [data]="data1" [title]="'Ventas'">
         </app-dona>
 
     </div>
 
     <div class="col-6">
 
-        <app-dona 
-            [title]="'Clientes'">
-            [data]="data2"
-        </app-dona>
+        <app-grafica-barras [title]="'Economia'" [label]="barraLabel" [data]="barraData"></app-grafica-barras>
 
     </div>
+
+    <div class="col-6">
+
+      <app-grafica-radar [title]="'Hobbies'" [radarLabel]="radarLabel" [radarData]="radarChartData">
+      </app-grafica-radar>
+
+    </div>
+
+    <div class="col-6">
+
+    <app-grafica-porcentaje  [label]="porcentajeLabel" [data]="porcentajeData"></app-grafica-porcentaje>
+
+    </div>
+
+
+    
 
 </div>

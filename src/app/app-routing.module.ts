@@ -6,7 +6,6 @@ import { PagesRoutingModule } from "./pages/pages.routing";
 import { AuthRoutingModule } from "./auth/auth.routing";
 
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
-import { PagesModule } from './pages/pages.module';
 
 
 
