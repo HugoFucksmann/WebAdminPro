@@ -1,1 +1,23 @@
-<p>rxjs works!</p>
+
+<div class="row">
+    <div class="col-6">
+        <div class="card bg-info text-white">
+          <div class="card-body">
+            <div class="d-flex">
+              <div class="stats">
+                <h1 class="text-white">{{ rxjs || 0 }}+</h1>
+                <h6 class="text-white"> return interval(100)
+                  .pipe(
+                  take(70),
+                  map( valor => valor +1 ),
+                  filter( valor => ( valor % 2 === 0 ) ? true : false )
+                </h6>
+                
+              </div>
+              <div class="stats-icon text-right ml-auto"><i class="fa fa-superpowers display-5 op-3 text-dark"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

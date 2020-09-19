@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Observable,interval, Subscription } from 'rxjs';
 import { retry, take, map, filter } from 'rxjs/operators';
 
@@ -11,6 +11,7 @@ import { retry, take, map, filter } from 'rxjs/operators';
 export class RxjsComponent implements OnDestroy {
 
   public intervalSubs: Subscription;
+  public rxjs: number;
 
   constructor() { 
 
@@ -35,7 +36,7 @@ export class RxjsComponent implements OnDestroy {
       //! o asi mas simple
 
       this.intervalSubs = this.retornaIntervalo()
-      .subscribe( console.log );
+      .subscribe( resp => this.rxjs = resp );
   }
 
   ngOnDestroy(): void {
@@ -45,9 +46,9 @@ export class RxjsComponent implements OnDestroy {
   retornaIntervalo(): Observable<number> {
     
     //ver orden de take map y filter
-    return interval(500)
+    return interval(100)
               .pipe(
-                take(10),
+                take(70),
                 map( valor => valor +1 ),
                 filter( valor => ( valor % 2 === 0 ) ? true : false ),
               );    

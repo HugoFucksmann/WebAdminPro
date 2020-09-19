@@ -8,6 +8,8 @@ import { Label } from 'ng2-charts';
 })
 export class GraficaPorcentajeComponent implements OnInit {
 
+  @Input() title = 'sin titulo';
+
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
